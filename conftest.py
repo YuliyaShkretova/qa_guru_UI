@@ -10,7 +10,6 @@ def browser_setup():
     browser.config.base_url = 'https://demoqa.com'
     browser.config.window_width = 903
     browser.config.window_height = 1166
-    # browser.driver.set_window_size(903, 1166)
     browser.config.timeout = 10
 
     yield
