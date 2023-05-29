@@ -8,7 +8,6 @@ from selenium.webdriver.remote import webdriver
 from selene import Browser, Config
 from selenium.webdriver import Remote
 
-
 from utils import attach
 
 DEFAULT_BROWSER_VERSION = "100.0"
