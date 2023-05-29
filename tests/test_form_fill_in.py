@@ -1,6 +1,6 @@
-from HW_5_5.registration import Registration
+from pages.registration import Registration
 
-from UserData.user import user
+from userdata.user import user
 
 
 def test_form_fill_in(browser_setup):
