@@ -2,8 +2,9 @@ from selene.support.shared import browser
 from selene import be, have, command
 
 from tests.conftest import setup_browser
-from utils import resources
 from userdata.user import User
+from utils import resources
+
 
 
 class Registration:

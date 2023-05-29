@@ -1,5 +1,4 @@
 from pages.registration import Registration
-
 from userdata.user import user
 
 
