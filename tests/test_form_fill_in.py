@@ -4,7 +4,8 @@ from userdata.user import user
 
 
 def test_form_fill_in(setup_browser):
-    registration = Registration()
+    browser = setup_browser
+    registration = Registration(browser)
     registration.open()
     registration.fill_in(user)
     registration.submit()

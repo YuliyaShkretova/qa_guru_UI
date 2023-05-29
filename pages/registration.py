@@ -7,7 +7,9 @@ from userdata.user import User
 
 
 class Registration:
-    browser = setup_browser
+    def __init__(self):
+        self.browser = browser
+
     def open(self):
         browser.open('https://demoqa.com/automation-practice-form')
 
