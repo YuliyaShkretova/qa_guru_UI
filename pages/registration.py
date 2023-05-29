@@ -1,15 +1,15 @@
 from selene.support.shared import browser
 from selene import be, have, command
 
-from tests.conftest import browser_setup
+from tests.conftest import setup_browser
 from utils import resources
 from userdata.user import User
 
 
 class Registration:
-    browser = browser_setup
+    browser = setup_browser
     def open(self):
-        browser.open('/automation-practice-form')
+        browser.open('https://demoqa.com/automation-practice-form')
 
     def fill_in(self, user: User):
         browser.element('[id="firstName"]').should(be.blank).type(user.name)
