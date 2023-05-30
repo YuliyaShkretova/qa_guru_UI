@@ -1,13 +1,9 @@
-import os
-
 import dotenv
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.remote import webdriver
 from selene import Browser, Config
-from selenium.webdriver import Remote
-
+from dotenv import load_dotenv
 from utils import attach
 
 DEFAULT_BROWSER_VERSION = "100.0"
@@ -25,7 +21,7 @@ def load_env():
     dotenv.load_dotenv('.env')
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def setup_browser(request):
     browser_version = request.config.getoption('--browser_version')
     browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
@@ -45,10 +41,10 @@ def setup_browser(request):
     login = 'user1'
     password = '1234'
 
-    driver = Remote(
+    driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
-        options=options)
-
+        options=options
+    )
     browser = Browser(Config(driver))
 
     yield browser
@@ -58,4 +54,3 @@ def setup_browser(request):
     attach.add_logs(browser)
     attach.add_video(browser)
     browser.quit()
-

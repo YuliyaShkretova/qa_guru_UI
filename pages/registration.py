@@ -6,8 +6,6 @@ from utils import resources
 
 
 class Registration:
-    def __init__(self):
-        self.browser = browser
 
     def open(self):
         browser.open('https://demoqa.com/automation-practice-form')
