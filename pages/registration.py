@@ -1,10 +1,8 @@
 from selene.support.shared import browser
 from selene import be, have, command
 
-from tests.conftest import setup_browser
-from userdata.user import User
+from data.user import User
 from utils import resources
-
 
 
 class Registration:
