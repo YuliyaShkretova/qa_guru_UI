@@ -3,8 +3,8 @@ from data.user import user
 
 
 def test_form_fill_in(setup_browser):
-    browser = setup_browser
-    registration = Registration(browser)
+
+    registration = Registration()
     registration.open()
     registration.fill_in(user)
     registration.submit()
