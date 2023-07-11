@@ -2,13 +2,15 @@ from selene.support.shared import browser
 from selene import be, have, command
 
 from data.user import User
-from utils import resources
+from utils import resources, helper
 
 
 class Registration:
 
     def open(self):
         browser.open('https://demoqa.com/automation-practice-form')
+        helper.remove_ads(amount=3, timeout=6)
+        helper.remove_ads(amount=1, timeout=2)
 
     def fill_in(self, user: User):
         browser.element('[id="firstName"]').should(be.blank).type(user.name)
@@ -34,7 +36,7 @@ class Registration:
     def submit(self):
         browser.element('[id="submit"]').press_enter()
 
-    def check(self, user: User):
+    def check_filled_in_full_data(self, user: User):
         browser.all('tbody tr').should(have.exact_texts(f'Student Name' + ' ' + user.name + ' ' + user.surname,
                                                         f'Student Email' + ' ' + user.email,
                                                         f'Gender' + ' ' + f'{user.gender.value}',

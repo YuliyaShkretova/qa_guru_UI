@@ -1,3 +1,5 @@
+import os
+
 import dotenv
 import pytest
 from selenium import webdriver
@@ -36,10 +38,10 @@ def setup_browser(request):
     }
     options.capabilities.update(capabilities)
 
-    # login = os.getenv('LOGIN')
-    # password = os.getenv('PASSWORD!')
-    login = 'user1'
-    password = '1234'
+    login = os.getenv('LOGIN')
+    password = os.getenv('PASSWORD!')
+    # login = 'user1'
+    # password = '1234'
 
     driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
