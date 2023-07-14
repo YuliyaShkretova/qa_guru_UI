@@ -1,7 +1,5 @@
 from dataclasses import dataclass
-from datetime import date
 from enum import Enum
-from typing import List
 
 
 class Gender(Enum):
@@ -9,26 +7,9 @@ class Gender(Enum):
     female = 'Female'
     other = 'Other'
 
-#
-# class Subject(Enum):
-#     hindi = 'Hindi'
-#     social_studies = 'Social Studies'
-
 
 @dataclass
 class User:
-    # name: str
-    # surname: str
-    # email: str
-    # gender: Gender
-    # mobile: str
-    # date_of_birth: date
-    # subject: List[Subject]
-    # hobbies: List[Hobbies]
-    # picture: str
-    # address: str
-    # state: str
-    # city: str
 
     def __init__(self, name, surname, email, gender, mobile, year, month, date, subject, hobbies, picture, address,
                  state,
@@ -64,3 +45,19 @@ user = User(
     address='Мурталь, Австрия',
     state='NCR',
     city='Noida')
+
+user_parts = User(
+    name='Юлия',
+    surname='Шкретова',
+    email='y.shk@mail.ru',
+    gender=Gender.female,
+    mobile='1234567890',
+    year=1991,
+    month='October',
+    date=13,
+    subject='',
+    hobbies='',
+    picture='sticker.jpg',
+    address='',
+    state='',
+    city='')
