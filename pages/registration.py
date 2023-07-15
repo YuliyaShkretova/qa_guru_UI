@@ -1,7 +1,7 @@
 from selene.support.shared import browser
 from selene import be, have, command
 
-from data.user import User
+from data.user import User, Hobbies
 from utils import resources, helper
 
 
@@ -41,7 +41,7 @@ class Registration:
 
     def fill_in_subject(self, user: User):
         for user.subject in user.subject:
-            browser.all('#subjectsInput').type(user.subject.value).press_enter()
+            browser.element('#subjectsInput').type(user.subject).press_enter()
         return self
 
     def fill_in_hobbies(self, user: User):
@@ -59,10 +59,12 @@ class Registration:
 
     def fill_in_full_address(self, user: User):
         browser.element('[id="stateCity-label"]').perform(command.js.scroll_into_view)
-        browser.element('[id="state"]').click()
-        browser.element('[id="react-select-3-input"]').type(user.state).press_tab()
-        browser.element('[id="city"]').click()
-        browser.element(f'[id="react-select-4-input"]').type(user.city).press_tab()
+        # browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+        browser.element('#state').click()
+        browser.all('[id^=react-select][id*=option]').element_by(have.exact_text(user.state)).click()
+        browser.element('#city').click()
+        browser.all('[id^=react-select][id*=option]').element_by(have.exact_text(user.city)).click()
+        # browser.element('#submit').execute_script('element.click()')
         return self
 
     def submit(self):

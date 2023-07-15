@@ -56,4 +56,4 @@ user = User(
     picture='sticker.jpg',
     address='Мурталь, Австрия',
     state='NCR',
-    city='Noida')
+    city='Delhi')

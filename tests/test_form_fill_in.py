@@ -17,6 +17,7 @@ def allure_decoration_steps(func):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Полное заполнение и отправка формы")
+@allure.severity('High')
 @allure_decoration_steps
 def test_form_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -32,7 +33,6 @@ def test_form_fill_in(setup_browser):
             .fill_in_hobbies(user) \
             .fill_in_subject(user) \
             .load_picture(user) \
-            .fill_in_hobbie(user) \
             .fill_in_address(user) \
             .fill_in_full_address(user)
     with allure.step('Отправить форму'):
@@ -46,6 +46,7 @@ def test_form_fill_in(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Частичное заполнение формы")
+@allure.severity('Mid')
 @allure_decoration_steps
 def test_form_partly_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -62,21 +63,18 @@ def test_form_partly_fill_in(setup_browser):
     with allure.step('Валидировать данные в форме'):
         registration.check_data(user.name) \
             .check_data(user.surname) \
-            .check_data(user.email)
+            .check_data(user.email) \
+            .check_data(user.mobile)
 
 
-@allure.tag("Steps")
-@allure.label("owner", "Yuliya Shkretova")
-@allure.feature("Tests for DEMO_QA")
-@allure.link("https://demoqa.com/automation-practice-form")
-@allure.title("Полное заполнение и отправка формы")
-@allure_decoration_steps
-def test_form_subject(setup_browser):
+def test_form_fill_aeddf(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
         registration.open()
     with allure.step('Заполнить форму регистрации'):
         registration.fill_in_name(user) \
-            .fill_in_subject(user)
+            .fill_in_full_address(user)
     with allure.step('Отправить форму'):
         registration.submit()
+
+
