@@ -6,7 +6,6 @@ from data.user import user, user_parts
 
 
 def allure_decoration_steps(func):
-
     def wrapper(*args, **kwargs):
         return wrapper(*args, **kwargs)
 
@@ -24,13 +23,20 @@ def test_form_fill_in(setup_browser):
         registration = Registration()
         registration.open()
     with allure.step('Заполнить форму регистрации'):
-        registration.fill_in(user)
+        registration.fill_in_name(user) \
+            .fill_in_surname(user) \
+            .fill_in_gender(user) \
+            .fill_in_mobile(user) \
+            .fill_in_date_of_birth(user) \
+            .fill_in_hobbie(user) \
+            .load_picture(user) \
+            .fill_in_hobbie(user) \
+            .fill_in_address(user) \
+            .fill_in_full_address(user)
     with allure.step('Отправить форму'):
         registration.submit()
     with allure.step('Валидировать данные в форме'):
         registration.check_filled_in_full_data(user)
-
-
 
 
 @allure.tag("Steps")
@@ -44,9 +50,14 @@ def test_form_partly_fill_in(setup_browser):
         registration = Registration()
         registration.open()
     with allure.step('Заполнить форму регистрации'):
-        registration.fill_in(user_parts)
+        registration.fill_in_name(user) \
+            .fill_in_surname(user) \
+            .fill_in_email(user) \
+            .fill_in_mobile(user) \
+            .fill_in_gender(user)
     with allure.step('Отправить форму'):
         registration.submit()
     with allure.step('Валидировать данные в форме'):
-        registration.check_filled_in_part_data(user_parts)
-
+        registration.check_data(user.name) \
+            .check_data(user.surname) \
+            .check_data(user.email)
