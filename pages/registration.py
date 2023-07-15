@@ -40,12 +40,14 @@ class Registration:
         return self
 
     def fill_in_subject(self, user: User):
-        browser.element('#subjectsInput').type(user.subject).press_enter()
+        for user.subject in user.subject:
+            browser.all('#subjectsInput').type(user.subject.value).press_enter()
         return self
 
     def fill_in_hobbies(self, user: User):
         for user.hobbies in user.hobbies:
             browser.all('.custom-checkbox').element_by(have.exact_text(user.hobbies.value)).click()
+        return self
 
     def load_picture(self, user: User):
         browser.element('#uploadPicture').set_value(resources.image(user.picture))

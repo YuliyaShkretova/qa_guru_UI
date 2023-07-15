@@ -14,6 +14,12 @@ class Hobbies(Enum):
     music = 'Music'
 
 
+class Subject(Enum):
+    arts = 'Arts'
+    maths = 'Maths'
+    biology = 'Biology'
+
+
 @dataclass
 class User:
 
@@ -45,7 +51,7 @@ user = User(
     year=1991,
     month='October',
     date=13,
-    subject='Hindi',
+    subject=[Subject.maths],
     hobbies=[Hobbies.music],
     picture='sticker.jpg',
     address='Мурталь, Австрия',

@@ -63,3 +63,20 @@ def test_form_partly_fill_in(setup_browser):
         registration.check_data(user.name) \
             .check_data(user.surname) \
             .check_data(user.email)
+
+
+@allure.tag("Steps")
+@allure.label("owner", "Yuliya Shkretova")
+@allure.feature("Tests for DEMO_QA")
+@allure.link("https://demoqa.com/automation-practice-form")
+@allure.title("Полное заполнение и отправка формы")
+@allure_decoration_steps
+def test_form_subject(setup_browser):
+    with allure.step('Открыть страницу регистрации'):
+        registration = Registration()
+        registration.open()
+    with allure.step('Заполнить форму регистрации'):
+        registration.fill_in_name(user) \
+            .fill_in_subject(user)
+    with allure.step('Отправить форму'):
+        registration.submit()
