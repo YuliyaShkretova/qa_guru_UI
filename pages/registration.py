@@ -43,9 +43,9 @@ class Registration:
         browser.element('#subjectsInput').type(user.subject).press_enter()
         return self
 
-    def fill_in_hobbie(self, user: User):
-        browser.element(f'[for="hobbies-checkbox-3"]').click()
-        return self
+    def fill_in_hobbies(self, user: User):
+        for user.hobbies in user.hobbies:
+            browser.all('.custom-checkbox').element_by(have.exact_text(user.hobbies.value)).click()
 
     def load_picture(self, user: User):
         browser.element('#uploadPicture').set_value(resources.image(user.picture))
@@ -63,11 +63,9 @@ class Registration:
         browser.element(f'[id="react-select-4-input"]').type(user.city).press_tab()
         return self
 
-
     def submit(self):
         browser.element('[id="submit"]').press_enter()
         return self
-
 
     def check_filled_in_full_data(self, user: User):
         browser.all('tbody tr').should(have.exact_texts(f'Student Name' + ' ' + user.name + ' ' + user.surname,
@@ -85,4 +83,3 @@ class Registration:
     def check_data(self, value):
         browser.element('.table-responsive').should(have.text(value))
         return self
-

@@ -8,6 +8,12 @@ class Gender(Enum):
     other = 'Other'
 
 
+class Hobbies(Enum):
+    sports = 'Sports'
+    reading = 'Reading'
+    music = 'Music'
+
+
 @dataclass
 class User:
 
@@ -40,24 +46,8 @@ user = User(
     month='October',
     date=13,
     subject='Hindi',
-    hobbies='Music',
+    hobbies=[Hobbies.music],
     picture='sticker.jpg',
     address='Мурталь, Австрия',
     state='NCR',
     city='Noida')
-
-user_parts = User(
-    name='Юлия',
-    surname='Шкретова',
-    email='y.shk@mail.ru',
-    gender=Gender.female,
-    mobile='1234567890',
-    year=1991,
-    month='October',
-    date=13,
-    subject='',
-    hobbies='',
-    picture='sticker.jpg',
-    address='',
-    state='',
-    city='')

@@ -2,7 +2,7 @@ import allure
 from allure_commons.types import Severity
 
 from pages.registration import Registration
-from data.user import user, user_parts
+from data.user import user
 
 
 def allure_decoration_steps(func):
@@ -26,9 +26,11 @@ def test_form_fill_in(setup_browser):
         registration.fill_in_name(user) \
             .fill_in_surname(user) \
             .fill_in_gender(user) \
+            .fill_in_email(user) \
             .fill_in_mobile(user) \
             .fill_in_date_of_birth(user) \
-            .fill_in_hobbie(user) \
+            .fill_in_hobbies(user) \
+            .fill_in_subject(user) \
             .load_picture(user) \
             .fill_in_hobbie(user) \
             .fill_in_address(user) \
