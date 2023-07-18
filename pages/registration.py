@@ -1,5 +1,7 @@
+import time
+
 from selene.support.shared import browser
-from selene import be, have, command
+from selene import be, have, command, query
 
 from data.user import User, Hobbies
 from utils import resources, helper
@@ -32,6 +34,10 @@ class Registration:
         browser.element('[id="userNumber"]').type(user.mobile)
         return self
 
+    def fill_in_mobile_12_digits(self, userPhone: User):
+        browser.element('[id="userNumber"]').type(userPhone.mobile)
+        return self
+
     def fill_in_date_of_birth(self, user: User):
         browser.element('[id="dateOfBirthInput"]').click()
         browser.element('.react-datepicker__year-select').type(user.year)
@@ -40,13 +46,12 @@ class Registration:
         return self
 
     def fill_in_subject(self, user: User):
-        for user.subject in user.subject:
-            browser.element('#subjectsInput').type(user.subject).press_enter()
+        browser.element('#subjectsInput').type(user.subject.value).press_enter()
         return self
 
     def fill_in_hobbies(self, user: User):
-        for user.hobbies in user.hobbies:
-            browser.all('.custom-checkbox').element_by(have.exact_text(user.hobbies.value)).click()
+        # browser.all('.custom-control-label').perform(command.js.scroll_into_view)
+        browser.all('.custom-control-label').element_by(have.exact_text(user.hobbies.value)).click()
         return self
 
     def load_picture(self, user: User):
@@ -59,16 +64,19 @@ class Registration:
 
     def fill_in_full_address(self, user: User):
         browser.element('[id="stateCity-label"]').perform(command.js.scroll_into_view)
-        # browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
         browser.element('#state').click()
         browser.all('[id^=react-select][id*=option]').element_by(have.exact_text(user.state)).click()
         browser.element('#city').click()
         browser.all('[id^=react-select][id*=option]').element_by(have.exact_text(user.city)).click()
-        # browser.element('#submit').execute_script('element.click()')
         return self
 
     def submit(self):
         browser.element('[id="submit"]').press_enter()
+        return self
+
+    def close(self):
+        browser.element('[id="closeLargeModal"]').perform(command.js.scroll_into_view).click()
+        browser.element('[id="closeLargeModal"]').should(be.not_.visible)
         return self
 
     def check_filled_in_full_data(self, user: User):
@@ -77,8 +85,8 @@ class Registration:
                                                         f'Gender' + ' ' + f'{user.gender.value}',
                                                         f'Mobile' + ' ' + user.mobile,
                                                         f'Date of Birth' + ' ' + f'{user.date}' + ' ' + f'{user.month}' + ',' + f'{user.year}',
-                                                        f'Subjects' + ' ' + user.subject,
-                                                        f'Hobbies' + ' ' + user.hobbies,
+                                                        f'Subjects' + ' ' + f'{user.subject.value}',
+                                                        f'Hobbies' + ' ' + f'{user.hobbies.value}',
                                                         f'Picture' + ' ' + user.picture,
                                                         'Address' + ' ' + user.address,
                                                         f'State and City' + ' ' + user.state + ' ' + user.city))
@@ -86,4 +94,20 @@ class Registration:
 
     def check_data(self, value):
         browser.element('.table-responsive').should(have.text(value))
+        return self
+
+    def get_mobile_value(self, userPhone: User):
+        mob1 = userPhone.mobile[:-2]
+        browser.element('tr:nth-child(4) > td:nth-child(2)').should(have.exact_text(mob1))
+
+
+    def check_validation_element_sign(self):
+        fist_name_sign = browser.element('[id="firstName"]').get(query.css_property('background-image'))
+        last_name_sign = browser.element('[id="lastName"]').get(query.css_property('background-image'))
+        phone_number_sign = browser.element('[id="userNumber"]').get(query.css_property('background-image'))
+        fist_name_border = browser.element('[id="firstName"]').get(query.css_property('border-color'))
+        last_name_border = browser.element('[id="lastName"]').get(query.css_property('border-color'))
+        phone_number_border = browser.element('[id="userNumber"]').get(query.css_property('border-color'))
+        assert fist_name_sign, last_name_sign and phone_number_sign is not None
+        assert fist_name_border, last_name_border and phone_number_border == 'dc3545'
         return self
