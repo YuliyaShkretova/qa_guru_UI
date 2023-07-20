@@ -18,7 +18,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
-    dotenv.load_dotenv('.env')
+    dotenv.load_dotenv('../.env')
 
 @pytest.fixture(scope='session')
 def setup_browser(request):
