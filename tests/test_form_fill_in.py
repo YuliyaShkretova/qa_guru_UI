@@ -19,7 +19,7 @@ def allure_decoration_steps(func):
 @allure.title("Полное заполнение и отправка формы")
 @allure.severity('HIGH')
 @allure_decoration_steps
-@pytest.mark('full registration test')
+@pytest.mark.FullFilled
 def test_form_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
@@ -50,7 +50,7 @@ def test_form_fill_in(setup_browser):
 @allure.title("Частичное заполнение формы")
 @allure.severity('MIDDLE')
 @allure_decoration_steps
-@pytest.mark('party filled in test')
+@pytest.mark.PartlyFilled
 def test_form_partly_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
@@ -78,7 +78,7 @@ def test_form_partly_fill_in(setup_browser):
 @allure.title("Валидация количества цифр номера мобильного телефона")
 @allure.severity('MIDDLE')
 @allure_decoration_steps
-@pytest.mark('mobile number digits test')
+@pytest.mark.MobileCheck
 def test_form_12_dig_phone(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
@@ -102,7 +102,7 @@ def test_form_12_dig_phone(setup_browser):
 @allure.title("Проверка возможности закрытия модального окна после успешной регистрации")
 @allure.severity('HIGH')
 @allure_decoration_steps
-@pytest.mark('close window after registration')
+@pytest.mark.CloseWindow
 def test_form_close_window(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
@@ -132,7 +132,7 @@ def test_form_close_window(setup_browser):
 @allure.title("Валидация заполнения обязательных полей input - восклицательный знак")
 @allure.severity('LOW')
 @allure_decoration_steps
-@pytest.mark('sign test')
+@pytest.mark.SignValidation
 def test_form_validation_sign(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
@@ -152,7 +152,7 @@ def test_form_validation_sign(setup_browser):
 @allure.title("Валидация заполнения обязательных полей input - красные границы")
 @allure.severity('LOW')
 @allure_decoration_steps
-@pytest.mark('red mark test')
+@pytest.mark.RedValidation
 def test_form_validation_sign(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
