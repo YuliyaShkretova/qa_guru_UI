@@ -2,6 +2,8 @@ import os
 
 import dotenv
 import pytest
+from allure_commons._allure import attach
+from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
@@ -10,15 +12,18 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 DEFAULT_BROWSER_VERSION = "100.0"
 
+
 def pytest_addoption(parser):
     parser.addoption(
         '--browser_version',
         default='100'
     )
 
+
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
     dotenv.load_dotenv('../.env')
+
 
 @pytest.fixture(scope='function')
 def setup_browser(request):
@@ -40,24 +45,20 @@ def setup_browser(request):
 
     login = os.getenv('LOGIN')
     password = os.getenv('PASSWORD!')
-    try:
-        driver = webdriver.Remote(
-            command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
-            options=options
-        )
-        print("Successfully connected to Selenoid.")
-    except Exception as e:
-        print(f"Failed to connect to Selenoid: {e}")
-        raise
 
-    browser = Browser(Config(driver))
+    driver = webdriver.Remote(
+        command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
+        options=options
+    )
+    print("Successfully connected to Selenoid.")
+    browser.config.driver = driver
 
+    # browser = Browser(Config(driver))
 
     yield browser
 
-
-#         attach.add_html(browser)
-#         attach.add_screenshot(browser)
-#         attach.add_logs(browser)
-#         attach.add_video(browser)
-#         browser.quit()
+    attach.add_html(browser)
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
+    browser.quit()
