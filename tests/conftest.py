@@ -3,17 +3,17 @@ import os
 import dotenv
 import pytest
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
 from dotenv import load_dotenv
 from webdriver_manager.chrome import ChromeDriverManager
 
-DEFAULT_BROWSER_VERSION = "98.0"
+DEFAULT_BROWSER_VERSION = "100.0"
 
 def pytest_addoption(parser):
     parser.addoption(
         '--browser_version',
-        default='98.0'
+        default='100.0'
     )
 
 @pytest.fixture(scope='session', autouse=True)
@@ -27,7 +27,7 @@ def setup_browser(request):
 
     options = Options()
     selenoid_capabilities = {
-        "browserName": "firefox",
+        "browserName": "chrome",
         "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
