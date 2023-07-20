@@ -16,7 +16,7 @@ def allure_decoration_steps(func):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Полное заполнение и отправка формы")
-@allure.severity('High')
+@allure.severity('HIGH')
 @allure_decoration_steps
 def test_form_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -46,7 +46,7 @@ def test_form_fill_in(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Частичное заполнение формы")
-@allure.severity('Mid')
+@allure.severity('MIDDLE')
 @allure_decoration_steps
 def test_form_partly_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -73,7 +73,7 @@ def test_form_partly_fill_in(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Валидация количества цифр номера мобильного телефона")
-@allure.severity('Mid')
+@allure.severity('MIDDLE')
 @allure_decoration_steps
 def test_form_12_dig_phone(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -96,7 +96,7 @@ def test_form_12_dig_phone(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Проверка возможности закрытия модального окна после успешной регистрации")
-@allure.severity('High')
+@allure.severity('HIGH')
 @allure_decoration_steps
 def test_form_close_window(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -124,8 +124,8 @@ def test_form_close_window(setup_browser):
 @allure.label("owner", "Yuliya Shkretova")
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
-@allure.title("Валидация заполнения обязательных полей input")
-@allure.severity('Low')
+@allure.title("Валидация заполнения обязательных полей input - восклицательный знак")
+@allure.severity('LOW')
 @allure_decoration_steps
 def test_form_validation_sign(setup_browser):
     with allure.step('Открыть страницу регистрации'):
@@ -137,3 +137,22 @@ def test_form_validation_sign(setup_browser):
         registration.submit()
     with allure.step('На обязательных к заполнению полях input валидация отрабатывает'):
         registration.check_validation_element_sign()
+
+
+@allure.tag("Steps")
+@allure.label("owner", "Yuliya Shkretova")
+@allure.feature("Tests for DEMO_QA")
+@allure.link("https://demoqa.com/automation-practice-form")
+@allure.title("Валидация заполнения обязательных полей input - красные границы")
+@allure.severity('LOW')
+@allure_decoration_steps
+def test_form_validation_sign(setup_browser):
+    with allure.step('Открыть страницу регистрации'):
+        registration = Registration()
+        registration.open()
+    with allure.step('Заполнить форму регистрации'):
+        registration.fill_in_gender(user)
+    with allure.step('Отправить форму'):
+        registration.submit()
+    with allure.step('На обязательных к заполнению полях input валидация отрабатывает'):
+        registration.check_validation_element_red()

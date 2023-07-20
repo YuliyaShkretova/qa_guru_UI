@@ -100,14 +100,17 @@ class Registration:
         mob1 = userPhone.mobile[:-2]
         browser.element('tr:nth-child(4) > td:nth-child(2)').should(have.exact_text(mob1))
 
-
     def check_validation_element_sign(self):
         fist_name_sign = browser.element('[id="firstName"]').get(query.css_property('background-image'))
         last_name_sign = browser.element('[id="lastName"]').get(query.css_property('background-image'))
         phone_number_sign = browser.element('[id="userNumber"]').get(query.css_property('background-image'))
+        assert fist_name_sign, last_name_sign and phone_number_sign is not None
+        return self
+
+    def check_validation_element_red(self):
         fist_name_border = browser.element('[id="firstName"]').get(query.css_property('border-color'))
         last_name_border = browser.element('[id="lastName"]').get(query.css_property('border-color'))
         phone_number_border = browser.element('[id="userNumber"]').get(query.css_property('border-color'))
-        assert fist_name_sign, last_name_sign and phone_number_sign is not None
         assert fist_name_border, last_name_border and phone_number_border == 'dc3545'
         return self
+
