@@ -24,7 +24,6 @@ def test_form_fill_in(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
         registration.open()
-        print(user.hobbies.value)
     with allure.step('Заполнить форму регистрации'):
         registration.fill_in_name(user) \
             .fill_in_surname(user) \
@@ -153,7 +152,7 @@ def test_form_validation_sign(setup_browser):
 @allure.severity('LOW')
 @allure_decoration_steps
 @pytest.mark.RedValidation
-def test_form_validation_sign(setup_browser):
+def test_form_validation_red(setup_browser):
     with allure.step('Открыть страницу регистрации'):
         registration = Registration()
         registration.open()
