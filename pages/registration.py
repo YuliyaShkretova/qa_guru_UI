@@ -69,7 +69,7 @@ class Registration:
         browser.element('[id="stateCity-label"]').perform(command.js.scroll_into_view)
         browser.element('#state').perform(command.js.scroll_into_view).click()
         browser.all('[id^=react-select][id*=option]').element_by(have.exact_text(user.state)).click()
-        browser.element('#city').click()
+        browser.element('#city').perform(command.js.scroll_into_view).click()
         browser.all('[id^=react-select][id*=option]').element_by(have.exact_text(user.city)).click()
         return self
 
