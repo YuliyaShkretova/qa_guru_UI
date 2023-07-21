@@ -6,6 +6,16 @@ authors = ["YuliyaShkretova <129888062+YuliyaShkretova@users.noreply.github.com>
 readme = "README.md"
 packages = [{include = "5_hm"}]
 
+[tool.pytest.ini_options]
+markers = [
+    'RedValidation: красные рамки',
+    'SignValidation: красный воск знак',
+    'CloseWindow: модальное окно закрыто',
+    'MobileCheck: телефон может содержать 10 знаков',
+    'PartlyFilled: проверка обязательных полей для регистрации',
+    'FullFilled: регистрация проходит'
+]
+
 [tool.poetry.dependencies]
 python = "^3.10"
 

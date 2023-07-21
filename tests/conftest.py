@@ -51,10 +51,7 @@ def setup_browser(request):
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
         options=options
     )
-    print("Successfully connected to Selenoid.")
     browser.config.driver = driver
-
-    # browser = Browser(Config(driver))
 
     yield browser
 

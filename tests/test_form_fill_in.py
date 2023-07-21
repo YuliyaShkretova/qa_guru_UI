@@ -17,7 +17,7 @@ def allure_decoration_steps(func):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Полное заполнение и отправка формы")
-@allure.severity('HIGH')
+@allure.severity(severity_level='HIGH')
 @allure_decoration_steps
 @pytest.mark.FullFilled
 def test_form_fill_in(setup_browser):
@@ -47,7 +47,7 @@ def test_form_fill_in(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Частичное заполнение формы")
-@allure.severity('MIDDLE')
+@allure.severity(severity_level='HIGH')
 @allure_decoration_steps
 @pytest.mark.PartlyFilled
 def test_form_partly_fill_in(setup_browser):
@@ -75,7 +75,7 @@ def test_form_partly_fill_in(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Валидация количества цифр номера мобильного телефона")
-@allure.severity('MIDDLE')
+@allure.severity(severity_level='MIDDLE')
 @allure_decoration_steps
 @pytest.mark.MobileCheck
 def test_form_12_dig_phone(setup_browser):
@@ -99,7 +99,7 @@ def test_form_12_dig_phone(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Проверка возможности закрытия модального окна после успешной регистрации")
-@allure.severity('HIGH')
+@allure.severity(severity_level='HIGH')
 @allure_decoration_steps
 @pytest.mark.CloseWindow
 def test_form_close_window(setup_browser):
@@ -129,7 +129,7 @@ def test_form_close_window(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Валидация заполнения обязательных полей input - восклицательный знак")
-@allure.severity('LOW')
+@allure.severity(severity_level='LOW')
 @allure_decoration_steps
 @pytest.mark.SignValidation
 def test_form_validation_sign(setup_browser):
@@ -149,7 +149,7 @@ def test_form_validation_sign(setup_browser):
 @allure.feature("Tests for DEMO_QA")
 @allure.link("https://demoqa.com/automation-practice-form")
 @allure.title("Валидация заполнения обязательных полей input - красные границы")
-@allure.severity('LOW')
+@allure.severity(severity_level='LOW')
 @allure_decoration_steps
 @pytest.mark.RedValidation
 def test_form_validation_red(setup_browser):
