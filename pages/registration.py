@@ -12,6 +12,7 @@ class Registration:
     browser = setup_browser
 
     def open(self):
+        browser.config.window_width, browser.config.window_height = 1920, 1020
         browser.open('https://demoqa.com/automation-practice-form')
         helper.remove_ads(amount=3, timeout=6)
         helper.remove_ads(amount=1, timeout=2)

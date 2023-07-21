@@ -3,6 +3,7 @@ import os
 import dotenv
 import pytest
 from allure_commons._allure import attach
+from utils import attach
 from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -57,8 +58,8 @@ def setup_browser(request):
 
     yield browser
 
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_video(browser)
+    # attach.add_html(browser)
+    # attach.add_screenshot(browser)
+    # attach.add_logs(browser)
+    # attach.add_video(browser)
     browser.quit()
