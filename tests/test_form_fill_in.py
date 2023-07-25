@@ -90,7 +90,7 @@ def test_form_12_dig_phone(setup_browser):
             .fill_in_gender(userPhone)
     with allure.step('Отправить форму'):
         registration.submit()
-    with allure.step('Проверить, что номер телефона состоит из 10 символов '):
+    with allure.step('Проверить количество символов и номер телефона'):
         registration.get_mobile_value(userPhone)
 
 
@@ -120,7 +120,7 @@ def test_form_close_window(setup_browser):
             .fill_in_full_address(user)
     with allure.step('Отправить форму'):
         registration.submit()
-    with allure.step('Закрыть окно регистрации и убедиться, что оно закрыто'):
+    with allure.step('Закрыть окно регистрации; убедиться, что оно закрыто'):
         registration.close()
 
 
@@ -140,7 +140,7 @@ def test_form_validation_sign(setup_browser):
         registration.fill_in_gender(user)
     with allure.step('Отправить форму'):
         registration.submit()
-    with allure.step('На обязательных к заполнению полях input валидация отрабатывает'):
+    with allure.step('Проверить доп. знак на обязательных полях'):
         registration.check_validation_element_sign()
 
 
@@ -160,5 +160,5 @@ def test_form_validation_red(setup_browser):
         registration.fill_in_gender(user)
     with allure.step('Отправить форму'):
         registration.submit()
-    with allure.step('На обязательных к заполнению полях input валидация отрабатывает'):
+    with allure.step('Проверить красную границу у обязательных полей'):
         registration.check_validation_element_red()

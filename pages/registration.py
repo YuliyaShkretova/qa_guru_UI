@@ -1,9 +1,8 @@
-import time
 
 from selene.support.shared import browser
 from selene import be, have, command, query
 
-from data.user import User, Hobbies
+from data.user import User
 from tests.conftest import setup_browser
 from utils import resources, helper
 

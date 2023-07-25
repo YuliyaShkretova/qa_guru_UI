@@ -7,9 +7,7 @@ from utils import attach
 from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config
-from dotenv import load_dotenv
-from webdriver_manager.chrome import ChromeDriverManager
+
 
 DEFAULT_BROWSER_VERSION = "100.0"
 
