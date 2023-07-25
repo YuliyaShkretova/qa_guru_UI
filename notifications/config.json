@@ -1,8 +1,8 @@
 {
   "base": {
     "project": "${JOB_BASE_NAME}",
-    "environment": "some env",
-    "comment": "some comment",
+    "environment": "base env",
+    "comment": "dipoma tests",
     "reportLink": "${BUILD_URL}",
     "language": "en",
     "messenger": "telegram",
