@@ -50,7 +50,7 @@ def setup_browser(request):
         options=options
     )
     browser.config.driver = driver
-
+    print('connection settled')
     yield browser
 
     attach.add_html(browser)
