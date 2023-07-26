@@ -1,5 +1,5 @@
 # **Project Name: UI testing**
-This repository contains the code for US automated tests for https://demoqa.com/automation-practice-form. The project is part of a testing and automation course and aims to demonstrate the usage of recieved knowlege.
+This repository contains the code for UI automated tests for https://demoqa.com/automation-practice-form. The project is part of a testing and automation course and aims to demonstrate the usage of received knowledge.
 
 ## **Technologies and Tools Used** 
 
