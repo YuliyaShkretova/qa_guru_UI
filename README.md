@@ -20,7 +20,7 @@ _https://jenkins.autotests.cloud/job/UI_diplom/_
 ![Alt текст](resource/jenkins.png)
 
 
-## **Allure Test Report**
+## **Allure Report**
 
 The project uses Allure Test Report for generating comprehensive and interactive test reports. Allure Test Report provides detailed information about test execution, including test steps, attachments, and historical data.
 
@@ -40,9 +40,8 @@ _https://allure.autotests.cloud/project/3536/dashboards_
 
 
 
-## **Allure TestOps Project:**
+## **Jira Integration:**
 
-Jira Integration
 The project is integrated with Jira for issue tracking and project management. Jira allows for efficient tracking of bugs, tasks, and improvements related to the testing process.
 
 Jira Task:
