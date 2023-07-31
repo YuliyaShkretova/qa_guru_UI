@@ -23,6 +23,7 @@ def pytest_addoption(parser):
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
     dotenv.load_dotenv('../.env')
+    return load_dotenv()
 
 
 @pytest.fixture(scope='function')
@@ -45,6 +46,7 @@ def setup_browser(request):
 
     login = os.getenv('LOGIN')
     password = os.getenv('PASSWORD!')
+    print(login, password)
 
     driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
