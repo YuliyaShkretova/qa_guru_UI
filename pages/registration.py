@@ -52,7 +52,6 @@ class Registration:
         return self
 
     def fill_in_hobbies(self, user: User):
-        # browser.all('.custom-control-label').perform(command.js.scroll_into_view)
         browser.all('.custom-control-label').element_by(have.exact_text(user.hobbies.value)).click()
         return self
 
